@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		213FE32524FBD04B00885F26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FE32424FBD04B00885F26 /* AppDelegate.swift */; };
 		213FE32724FBD04B00885F26 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FE32624FBD04B00885F26 /* SceneDelegate.swift */; };
-		213FE32924FBD04B00885F26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FE32824FBD04B00885F26 /* ViewController.swift */; };
+		213FE32924FBD04B00885F26 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FE32824FBD04B00885F26 /* ShoppingListViewController.swift */; };
 		213FE32C24FBD04B00885F26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 213FE32A24FBD04B00885F26 /* Main.storyboard */; };
 		213FE32F24FBD04B00885F26 /* shoppingList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 213FE32D24FBD04B00885F26 /* shoppingList.xcdatamodeld */; };
 		213FE33124FBD05400885F26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 213FE33024FBD05400885F26 /* Assets.xcassets */; };
@@ -31,7 +31,7 @@
 		213FE32124FBD04B00885F26 /* shoppingList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shoppingList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		213FE32424FBD04B00885F26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		213FE32624FBD04B00885F26 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		213FE32824FBD04B00885F26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		213FE32824FBD04B00885F26 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		213FE32B24FBD04B00885F26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		213FE32E24FBD04B00885F26 /* shoppingList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = shoppingList.xcdatamodel; sourceTree = "<group>"; };
 		213FE33024FBD05400885F26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,10 +81,11 @@
 		213FE32324FBD04B00885F26 /* shoppingList */ = {
 			isa = PBXGroup;
 			children = (
+				213FE34B24FBD07800885F26 /* Controller */,
+				213FE34A24FBD07000885F26 /* View */,
+				213FE34924FBD06700885F26 /* Model */,
 				213FE32424FBD04B00885F26 /* AppDelegate.swift */,
 				213FE32624FBD04B00885F26 /* SceneDelegate.swift */,
-				213FE32824FBD04B00885F26 /* ViewController.swift */,
-				213FE32A24FBD04B00885F26 /* Main.storyboard */,
 				213FE33024FBD05400885F26 /* Assets.xcassets */,
 				213FE33224FBD05400885F26 /* LaunchScreen.storyboard */,
 				213FE33524FBD05400885F26 /* Info.plist */,
@@ -100,6 +101,29 @@
 				213FE34024FBD05500885F26 /* Info.plist */,
 			);
 			path = shoppingListTests;
+			sourceTree = "<group>";
+		};
+		213FE34924FBD06700885F26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		213FE34A24FBD07000885F26 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				213FE32A24FBD04B00885F26 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		213FE34B24FBD07800885F26 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				213FE32824FBD04B00885F26 /* ShoppingListViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				213FE32924FBD04B00885F26 /* ViewController.swift in Sources */,
+				213FE32924FBD04B00885F26 /* ShoppingListViewController.swift in Sources */,
 				213FE32F24FBD04B00885F26 /* shoppingList.xcdatamodeld in Sources */,
 				213FE32524FBD04B00885F26 /* AppDelegate.swift in Sources */,
 				213FE32724FBD04B00885F26 /* SceneDelegate.swift in Sources */,
