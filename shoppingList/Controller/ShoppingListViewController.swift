@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ShoppingListViewController: UITableViewController, UISearchBarDelegate {
+class ShoppingListViewController: SwipeTableViewController, UISearchBarDelegate {
 
     
     
@@ -30,27 +30,21 @@ class ShoppingListViewController: UITableViewController, UISearchBarDelegate {
       
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-         {
-          let cell = self.tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-            if  let item = shoppingItems?[indexPath.row]{
-                cell.textLabel?.text = item.title
-                cell.accessoryType = item.done ? .checkmark : .none
-            } else {
-                cell.textLabel?.text = "No Items Added"
-            }
-            
-            
-            
-            
-            //cell.textLabel?.text = shoppingItems?[indexPath.row].title ?? "No Item Added"
-            
+         
+            {
+                    let cell = super.tableView(tableView, cellForRowAt: indexPath)
 
+                   if  let item = shoppingItems?[indexPath.row]{
+                                   cell.textLabel?.text = item.title
+                                   cell.accessoryType = item.done ? .checkmark : .none
+                               } else {
+                                   cell.textLabel?.text = "No Items Added"
+                               }
             
-
-           return cell
-       }
-    
-    
+                  return cell
+             }
+            
+           
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(shoppingItems?[indexPath.row])
         
@@ -68,12 +62,6 @@ class ShoppingListViewController: UITableViewController, UISearchBarDelegate {
             tableView.reloadData()
         
             tableView.deselectRow(at: indexPath, animated: true)
-
-       
-//        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark{
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-//        } else {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
         
     }
     
@@ -82,7 +70,7 @@ class ShoppingListViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.rowHeight = 60.0
     }
 
     
@@ -92,9 +80,6 @@ class ShoppingListViewController: UITableViewController, UISearchBarDelegate {
                let alert = UIAlertController(title: "Add New Item To Your Shopping List", message: "", preferredStyle: .alert)// making alert popup window
         let action = UIAlertAction(title: "Add New Item", style: .default){ (action) in
             print ("Success")
-//           let newItem = Item()
-//            newItem.title = textField.text!
-//            newItem.done = false
             
             if let currentCategory = self.selectedCategory {
                 do {
@@ -130,7 +115,7 @@ class ShoppingListViewController: UITableViewController, UISearchBarDelegate {
         print("search success")
         tableView.reloadData()
     }
-    
+       
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -151,4 +136,18 @@ class ShoppingListViewController: UITableViewController, UISearchBarDelegate {
         tableView.reloadData()
     }
     
-}
+     override func updateModel(at indexPath: IndexPath) {
+            if let item = shoppingItems?[indexPath.row] {
+                do {
+                    try realm.write{
+                        realm.delete(item)
+                    }
+                } catch {
+                    print("Error deleting item, \(error)")
+                }
+            }
+        }
+    }
+
+    
+
